@@ -29,7 +29,8 @@ find_package(DrMemoryFramework PATHS ${framework_dir})
 
 set(srcs
     drstrace.c
-    drstrace_named_consts.c)
+    drstrace_named_consts.c
+    gt_mod.c)
 
 if (WIN32)
   set(srcs ${srcs} ${PROJECT_SOURCE_DIR}/make/resources.rc)

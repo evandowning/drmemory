@@ -1,0 +1,19 @@
+Goal:
+    Create a system that allows us to morph a malware's system
+    call sequence such that it still accomplishes its malicious
+    intent, but also does some other benign activities as well.
+
+Steps to complete:
+[ ] Have the ability to insert system call during PE's execution
+[ ] Identify cases where system calls will affect future system calls
+    (and potentially behavior)
+[ ] Figure out how to ensure that the malware's original malicious activities
+    will still be accomplished
+[ ] Have the ability to do all of the above for multi-threaded binaries
+[ ] Have the ability to do all of the above for multi-process binaries
+[ ] Have all of the above work for real-world malware
+
+Conflicting cases:
+    Files
+    Registry Keys
+    Network

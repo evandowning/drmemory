@@ -119,6 +119,11 @@ print_usage(void)
     fprintf(stderr, "                the default, which is to trace all children).\n");
     fprintf(stderr, "-version        Print version number.\n");
     fprintf(stderr, "-verbose <N>    Change verbosity (default 1).\n");
+
+    fprintf(stderr, "-gttrace <outfile>  Specify the name of the trace log that will\n");
+    fprintf(stderr, "                be outputted.\n");
+    fprintf(stderr, "-gtmod <infile>  Specify the name of the trace log that will\n");
+    fprintf(stderr, "                be read.\n");
 }
 
 #define usage(msg, ...) do {                                    \

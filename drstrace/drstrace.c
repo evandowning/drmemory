@@ -42,6 +42,9 @@
 # include <windows.h>
 #endif
 
+#include "drsyscall_os.h"
+#include "gt_include.h"
+
 extern size_t get_const_arrays_num(void);
 
 /* Where to write the trace */
@@ -562,6 +565,16 @@ event_post_syscall(void *drcontext, int sysnum)
     res = drsys_iterate_args(drcontext, drsys_iter_arg_cb, &buf);
     if (res != DRMF_SUCCESS && res != DRMF_ERROR_DETAILS_UNKNOWN)
         ASSERT(false, "drsys_iterate_args failed post-syscall");
+
+    // Check if we should insert a system call after this one
+    // NOTE: Currently just super naive, but will get more sophisticated.
+    syscall_info_t *sysinfo = (syscall_info_t *) syscall;
+    if (!strcmp(sysinfo->name,"NtCreateFile"))
+    {
+        OUTPUT(&buf, "INSERTING NEW NtCreateFile call\n");
+        gt_ntcreatefile();
+    }
+
     FLUSH_BUFFER(outf, buf.buf, buf.sofar);
 }
 
@@ -641,7 +654,16 @@ options_init(client_id_t id)
                              BUFFER_SIZE_ELEMENTS(options.sympath));
             USAGE_CHECK(s != NULL, "missing symcache dir path");
             ALERT(2, "<drstrace symbol source is %s>\n", options.sympath);
-        } else {
+/*
+        } else if (strcmp(token, "-gttrace") == 0) {
+            gt_filename = dr_get_token(s, options.logdir,
+                             BUFFER_SIZE_ELEMENTS(options.logdir));
+            USAGE_CHECK(s != NULL, "missing logdir path");
+        } else if (strcmp(token, "-gtmod") == 0) {
+        }
+*/
+        }
+        else {
             ALERT(0, "UNRECOGNIZED OPTION: \"%s\"\n", token);
             USAGE_CHECK(false, "invalid option");
         }

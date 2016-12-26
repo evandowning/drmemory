@@ -1,0 +1,28 @@
+Usually, binary re-writing is done by DynInst, but this does not support PE (Windows).
+
+To rewrite binary, general method is to add a new code section header, write a
+function to inject, and place jmp hook (5 byte arbitrary jmp) into the function
+in the new header.
+
+After the function, it should return back to the location right after the place
+of hook to continue the execution
+
+http://www.ntcore.com/files/inject2exe.htm
+This would helpful for that.
+
+If you do not need the static binary to be re-written, you can use Pin, Dynamorio,
+or Detour to dynamically instrument the binary.
+
+============
+
+for DBI, PIN is good for doing that.
+Or, you can use DynamoRio
+for PIN, there is a callback function that you can set to hook either at an instruction point, or at any API calls
+
+============
+
+Actually, just use PIN and XED (https://software.intel.com/en-us/articles/xed-x86-encoder-decoder-software-library)
+
+Injecting new API calls is easy then.
+
+============
