@@ -31,8 +31,9 @@ We are based on DrMemory release 1.11.0
   - https://github.com/DynamoRIO/drmemory
   - https://github.com/DynamoRIO/drmemory/wiki/How-To-Build
 
-$ git clone *url*.git
+$ git clone https://github.com/evandowning/drmemory.git
 $ cd drmemory
+$ git checkout myworking
 $ make/git/devsetup.sh
 ```
 
