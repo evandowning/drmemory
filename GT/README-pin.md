@@ -66,15 +66,3 @@ $ ../../../pin -t obj-ia32/arsa-rewrite.dll -- test.exe
 
 If you would like to add additional API calls during the binary's execution,
 simply modify the input file as such:
-
-## Real-world
-
-One can think of the malware author using the first step (getting a trace
-of their malware's system calls) to gather recon on what their malware will
-look like to a ML algorithm.
-
-Then, using an adversarial ML algorithm, they can compute how to modify the
-API's call sequence to evade ML signatures.
-
-Finally, they feed this new sequence back into pin when the malware is finally
-run such that it evade detection by the ML algorithm.
