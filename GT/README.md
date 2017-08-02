@@ -1,5 +1,5 @@
 # dynamic-binary-instrumentation
-Used for performing dynamic binary rewriting on Windows PEs using DrMemory (based on DynamoRIO)
+Used for performing dynamic binary instrumentation on Windows PEs using DrMemory (based on DynamoRIO) to insert API calls.
 
 ## Installing
 1) Install Windows 10 32-bit on a VM.
