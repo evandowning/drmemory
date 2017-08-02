@@ -1,5 +1,5 @@
 # dynamic-binary-instrumentation
-Used for performing dynamic binary rewriting on Windows PEs using Pin
+Used for performing dynamic binary instrumentation on Windows PEs using Pin
 
 ## Building (and modifying) this tool
 First, install Windows 10 32-bit on a VM.
