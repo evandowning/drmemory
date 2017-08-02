@@ -114,17 +114,6 @@ $ cd ./drmemory/build
 $ ./bin/drstrace -- target.exe
 ```
 
-## Real-world Application
-One can think of the malware author using the first step (getting a trace
-of their malware's system calls) to gather recon on what their malware will
-look like to a ML algorithm.
-
-Then, using an adversarial ML algorithm, they can compute how to modify the
-API's call sequence to evade ML signatures.
-
-Finally, they feed this new sequence back into pin when the malware is finally
-run such that it evade detection by the ML algorithm.
-
 ## Implementation details
 We modified DrStrace to do our work.
 In particular, we can modify (in drstrace.c) the function "event_post_syscall"
